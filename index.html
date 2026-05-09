@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velosoft Pte. Ltd. | IT Consulting Singapore</title>
+    <meta name="description" content="Velosoft Pte. Ltd. — Singapore-based IT consulting firm specialising in project management, digital transformation, and software development for financial services and government.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        :root {
+            --navy: #0d2b5e;
+            --navy-light: #1a3d7a;
+            --blue: #1565c0;
+            --light-blue: #e8f0fe;
+            --accent: #f39c12;
+            --text: #2c3e50;
+            --muted: #7f8c8d;
+            --white: #ffffff;
+            --bg: #f8f9fa;
+            --border: #dee2e6;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 43, 94, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        }
+        .nav-logo {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2.2rem; }
+        .nav-links a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.25s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(140deg, #071a3e 0%, #0d2b5e 45%, #1565c0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 90px 6% 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 820px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: var(--accent);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 0.6rem;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.88);
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .hero-desc {
+            color: rgba(255,255,255,0.62);
+            font-size: 0.97rem;
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            margin-bottom: 2.8rem;
+        }
+        .stat-number {
+            display: block;
+            color: var(--accent);
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 38px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            margin-right: 1rem;
+        }
+        .btn-primary:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(243,156,18,0.35);
+        }
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid rgba(255,255,255,0.45);
+            color: white;
+            padding: 12px 36px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* ── SECTION BASE ── */
+        section { padding: 90px 8%; }
+        .section-tag {
+            display: inline-block;
+            color: var(--blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+        .section-header p { color: var(--muted); max-width: 580px; margin: 0 auto; }
+        .divider {
+            width: 56px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.9rem auto;
+            border-radius: 2px;
+        }
+
+        /* ── ABOUT ── */
+        #about { background: white; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .about-text .section-tag { display: block; }
+        .about-text h3 {
+            font-size: 1.75rem;
+            color: var(--navy);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+        .about-text p strong { color: var(--text); }
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+        .highlight-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .about-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .about-card {
+            background: var(--light-blue);
+            border-left: 4px solid var(--blue);
+            padding: 1.4rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .about-card h4 { color: var(--navy); font-size: 0.92rem; margin-bottom: 0.3rem; }
+        .about-card p { color: var(--muted); font-size: 0.83rem; line-height: 1.5; }
+
+        /* ── SERVICES ── */
+        #services { background: var(--bg); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 14px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.09);
+            border-top-color: var(--accent);
+        }
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+            font-size: 1.5rem;
+        }
+        .service-card h3 { color: var(--navy); font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; }
+        .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+        /* ── PORTFOLIO ── */
+        #portfolio { background: white; }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .portfolio-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.8rem 1.8rem 1.8rem 2.2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--navy);
+            transition: all 0.3s;
+        }
+        .portfolio-card:hover::before { background: var(--accent); }
+        .portfolio-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+        .portfolio-client {
+            font-size: 0.73rem;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.45rem;
+        }
+        .portfolio-card h3 { color: var(--navy); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .portfolio-card p { color: var(--muted); font-size: 0.87rem; line-height: 1.6; margin-bottom: 1rem; }
+        .portfolio-card p strong { color: var(--text); }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .tag {
+            background: var(--light-blue);
+            color: var(--blue);
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        /* ── CREDENTIALS ── */
+        #credentials { background: var(--bg); }
+        .cred-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .cred-section h3 {
+            color: var(--navy);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        .cred-item { display: flex; gap: 1rem; margin-bottom: 1.6rem; }
+        .cred-dot {
+            width: 11px;
+            height: 11px;
+            background: var(--navy);
+            border-radius: 50%;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .cred-info h4 { color: var(--text); font-size: 0.93rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .cred-info p { color: var(--muted); font-size: 0.84rem; }
+        .cred-year { color: var(--accent); font-size: 0.78rem; font-weight: 700; margin-top: 0.15rem; display: block; }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: linear-gradient(135deg, #071a3e 0%, #0d2b5e 100%);
+            color: white;
+            text-align: center;
+        }
+        #contact .section-tag { color: rgba(243,156,18,0.85); }
+        #contact .section-header h2 { color: white; }
+        #contact .section-header p { color: rgba(255,255,255,0.55); }
+        #contact .divider { background: var(--accent); }
+        .contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 2.8rem;
+            flex-wrap: wrap;
+        }
+        .contact-item { text-align: center; }
+        .contact-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
+        .contact-item h4 {
+            color: var(--accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+        }
+        .contact-item a, .contact-item p {
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-size: 0.97rem;
+            transition: color 0.2s;
+        }
+        .contact-item a:hover { color: var(--accent); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #040e22;
+            color: rgba(255,255,255,0.35);
+            text-align: center;
+            padding: 1.4rem;
+            font-size: 0.82rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .cred-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.6rem; }
+            .hero-stats { gap: 2rem; }
+            .stat-number { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .about-cards { grid-template-columns: 1fr; }
+            .about-highlights { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            section { padding: 65px 5%; }
+            .contact-items { gap: 2.5rem; }
+            .btn-primary, .btn-outline { display: block; margin: 0.5rem auto; max-width: 200px; text-align: center; }
+            .btn-primary { margin-right: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home" class="nav-logo">VELO<span>SOFT</span></a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">IT Consulting &nbsp;·&nbsp; Singapore</div>
+        <h1>VELO<span>SOFT</span></h1>
+        <p class="hero-subtitle">Delivering IT Excellence for Financial Services</p>
+        <p class="hero-desc">
+            Trusted IT consulting partner for banks, investment firms, and government agencies.
+            Combining 30+ years of technical leadership with proven project management to drive
+            meaningful digital transformation.
+        </p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Major Projects</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">US$100B+</span>
+                <span class="stat-label">Client Assets Served</span>
+            </div>
+        </div>
+        <a href="#contact" class="btn-primary">Get In Touch</a>
+        <a href="#portfolio" class="btn-outline">View Portfolio</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-grid">
+        <div class="about-text">
+            <span class="section-tag">About Velosoft</span>
+            <h3>30+ Years of IT Expertise, Focused on Results</h3>
+            <p>
+                Velosoft Pte. Ltd. is a Singapore-based IT consulting firm specialising in project management,
+                digital transformation, and software development — with a strong focus on financial services
+                and government clients.
+            </p>
+            <p>
+                Founded and led by <strong>Elang Setiawan</strong>, a Senior Project Manager whose career spans
+                Hewlett-Packard Consulting, StarHub Enterprise, a government research institution, and engagements with Singapore's leading
+                institutions including major investment companies and commercial banks.
+            </p>
+            <p>
+                With formal training in data science and deep expertise in both Agile (Scrum) and Waterfall
+                methodologies, Velosoft bridges the gap between business needs and technology — delivering
+                measurable outcomes on every engagement.
+            </p>
+            <div class="about-highlights">
+                <div class="highlight-item"><div class="highlight-dot"></div>Project Management (Agile & Waterfall)</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Azure Cloud Solutions</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Vendor & Stakeholder Management</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Generative AI Advisory</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Cross-Functional Team Leadership</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Data Analytics (Power BI)</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>Requirements Gathering</div>
+                <div class="highlight-item"><div class="highlight-dot"></div>SQL (Oracle & Microsoft)</div>
+            </div>
+        </div>
+        <div class="about-cards">
+            <div class="about-card">
+                <h4>Financial Services</h4>
+                <p>Proven track record with Singapore's leading investment institutions, major commercial banks, and top universities.</p>
+            </div>
+            <div class="about-card">
+                <h4>Government & Public Sector</h4>
+                <p>Experience with government research institutions, defence organisations, and Singapore's key statutory boards.</p>
+            </div>
+            <div class="about-card">
+                <h4>Digital Transformation</h4>
+                <p>Migrating legacy, Excel-based systems to modern cloud platforms with measurable ROI.</p>
+            </div>
+            <div class="about-card">
+                <h4>AI & Data Science</h4>
+                <p>Professionally trained in data science and Generative AI implementation for enterprise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="section-header">
+        <span class="section-tag">What We Do</span>
+        <h2>Our Services</h2>
+        <div class="divider"></div>
+        <p>End-to-end IT consulting tailored for financial institutions, government agencies, and enterprises seeking technology-driven transformation.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">📋</div>
+            <h3>IT Project Management</h3>
+            <p>Full lifecycle project delivery using Agile (Scrum) and Waterfall methodologies — from requirements gathering through go-live, with rigorous compliance and quality standards.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🔄</div>
+            <h3>Digital Transformation</h3>
+            <p>Replacing legacy and Excel-based systems with modern, scalable, cloud-based platforms. Proven success across banking, investment, and government environments.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Systems Development Advisory</h3>
+            <p>Technical leadership for custom software projects — trade workflow systems, portfolio management platforms, pricing systems, and financial data infrastructure.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>AI & Generative AI Advisory</h3>
+            <p>Building organisational capability for Generative AI using foundation models from Meta, Microsoft, and open-source LLMs. From strategy to team upskilling and implementation.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">☁️</div>
+            <h3>Cloud Solutions (Azure)</h3>
+            <p>Azure cloud architecture, migration planning, and implementation. Scalable, secure, and cost-optimised cloud infrastructure designed for financial and government compliance.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Data Analytics</h3>
+            <p>Business intelligence using Power BI and data science techniques. Turning raw data into actionable insight for decision-making, forecasting, and process optimisation.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="section-header">
+        <span class="section-tag">Track Record</span>
+        <h2>Selected Projects</h2>
+        <div class="divider"></div>
+        <p>High-impact engagements delivered for Singapore's leading financial institutions, government agencies, and enterprises.</p>
+    </div>
+    <div class="portfolio-grid">
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Large Singapore Investment Company &nbsp;·&nbsp; via HP Consulting</div>
+            <h3>GEMS — Global Equity Market Pricing System</h3>
+            <p>Velosoft provided technical programme management for the maintenance and enhancement of a centralised public market pricing system at a large Singapore investment company managing significant global assets. The platform integrates real-time data from Bloomberg, Barclays, JP Morgan, FactSet, Reuters, MSCI, and Blackrock — supporting investment managers across 10 countries.</p>
+            <div class="tags">
+                <span class="tag">Big Data</span>
+                <span class="tag">Real-Time Pricing</span>
+                <span class="tag">Investment Management</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Leading Singaporean Bank &nbsp;·&nbsp; Velosoft</div>
+            <h3>Project Portfolio Management (PPM) System</h3>
+            <p>Velosoft managed the ongoing improvement and daily operations of a project portfolio management system for a leading Singaporean bank. The system supports project selection, prioritisation, resource allocation, and progress monitoring aligned to the bank's strategic objectives — delivering <strong>20% ROI in Year 1</strong>.</p>
+            <div class="tags">
+                <span class="tag">Banking</span>
+                <span class="tag">PPM</span>
+                <span class="tag">20% ROI Year 1</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Leading Singapore University &nbsp;·&nbsp; Velosoft</div>
+            <h3>Trade Workflow System — Investment Office</h3>
+            <p>Velosoft designed and delivered a trade workflow system for the Investment Office of a leading Singapore university. The solution replaced an end-of-life legacy platform, transforming manual Excel-based investment approval processes into a fully digital, web-based workflow.</p>
+            <div class="tags">
+                <span class="tag">Investment Management</span>
+                <span class="tag">Web Application</span>
+                <span class="tag">Legacy Modernisation</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Government Research Institution &nbsp;·&nbsp; Finance Division</div>
+            <h3>Proprietary Budget Management System</h3>
+            <p>Velosoft provided end-to-end project management for a budget management system at a key Singapore government research institution. The engagement covered stakeholder alignment, vendor oversight, and full delivery — replacing manual Excel-based processes with automated SAP data extraction and enabling bottom-up budget consolidation across the organisation.</p>
+            <div class="tags">
+                <span class="tag">SAP Integration</span>
+                <span class="tag">Budget Automation</span>
+                <span class="tag">Government</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Singapore Government Defence Organisation &nbsp;·&nbsp; via System Integrator</div>
+            <h3>Next-Generation Club Management System</h3>
+            <p>Velosoft led project delivery of a cloud-based Club Management System for a Singapore government defence organisation, consolidating Golf, Bungalow, Membership, and Finance operations into a unified platform. The engagement coordinated 5 simultaneous development tracks across offshore teams in Malaysia, Myanmar, and India, under strict government security compliance requirements.</p>
+            <div class="tags">
+                <span class="tag">Cloud Migration</span>
+                <span class="tag">Multi-track Delivery</span>
+                <span class="tag">Government Compliance</span>
+            </div>
+        </div>
+
+        <div class="portfolio-card">
+            <div class="portfolio-client">Indonesia's Largest EV Distributor &nbsp;·&nbsp; via IT Services Firm</div>
+            <h3>Business Transformation &amp; IT Upgrade</h3>
+            <p>Velosoft drove full-scale business transformation and IT modernisation for Indonesia's largest electric vehicle distributor. The engagement included building organisational AI-assisted development capability using OpenAI Codex, Claude Code, and Google Gemini — equipping the client's teams with modern AI coding tools for the next phase of digital growth.</p>
+            <div class="tags">
+                <span class="tag">Business Transformation</span>
+                <span class="tag">OpenAI Codex</span>
+                <span class="tag">Claude Code</span>
+                <span class="tag">Google Gemini</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+    <div class="section-header">
+        <span class="section-tag">Background</span>
+        <h2>Education &amp; Certifications</h2>
+        <div class="divider"></div>
+    </div>
+    <div class="cred-grid">
+        <div class="cred-section">
+            <h3>Education</h3>
+            <div class="cred-item">
+                <div class="cred-dot"></div>
+                <div class="cred-info">
+                    <h4>Master of Engineering Science (M.Eng.Sc.)</h4>
+                    <p>Computer Science — Information Science</p>
+                    <p>The University of New South Wales, Sydney, Australia</p>
+                    <span class="cred-year">1990 – 1991</span>
+                </div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-dot"></div>
+                <div class="cred-info">
+                    <h4>Bachelor of Science (B.Sc.)</h4>
+                    <p>Computer Science — Software Design</p>
+                    <p>The University of Alberta, Edmonton, Canada</p>
+                    <span class="cred-year">1983 – 1987</span>
+                </div>
+            </div>
+        </div>
+        <div class="cred-section">
+            <h3>Certifications</h3>
+            <div class="cred-item">
+                <div class="cred-dot"></div>
+                <div class="cred-info">
+                    <h4>Certified ScrumMaster® (CSM®)</h4>
+                    <p>Scrum Alliance, Inc.</p>
+                    <span class="cred-year">Singapore</span>
+                </div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-dot"></div>
+                <div class="cred-info">
+                    <h4>Data Analytics Certificate</h4>
+                    <p>Microsoft Excel 2016 &amp; Power BI Desktop (Syllabus 1.0)</p>
+                    <p>ICDL Asia, Singapore</p>
+                </div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-dot"></div>
+                <div class="cred-info">
+                    <h4>Data Science Immersive</h4>
+                    <p>480-hour intensive programme</p>
+                    <p>General Assembly, Singapore</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2>Let's Work Together</h2>
+        <div class="divider"></div>
+        <p>Available for IT project management engagements, digital transformation advisory, and AI consulting.</p>
+    </div>
+    <div class="contact-items">
+        <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <h4>Phone</h4>
+            <a href="tel:+6592382248">+65 9238 2248</a>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <h4>Email</h4>
+            <a href="mailto:elang.setiawan@velosoft.com.sg">elang.setiawan@velosoft.com.sg</a>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <h4>Location</h4>
+            <p>Singapore</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Velosoft Pte. Ltd. &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; Singapore</p>
+</footer>
+
+</body>
+</html>
